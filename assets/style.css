@@ -1,7 +1,15 @@
+::-webkit-scrollbar{
+    background-color: var(--icn);
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--blc); 
+    border-radius: 10px;
+}
 /* reset CSS */
 @font-face {
     font-family: quicksand;
-    src: url(quicksand-v30-latin-regular.woff);
+    src: url(assets/quicksand-v30-latin-regular.woff);
 }
 .material-symbols-outlined{
     color: var(--icn);
@@ -15,7 +23,9 @@
     --icn: #F88A65;
     --gry: #C7C8CD;
 }
-*{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -24,10 +34,97 @@
     text-decoration: none;
 }
 
-/* SIDENAV */
-body{
-    overflow: hidden;
+/* LAYOUT */
+.ob{
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--blc);
+    height: 200px;
+    padding: 30px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
+.layout{
+    display: grid;
+    grid-template-areas:  
+    "box1 box2 card"
+    "jumbo jumbo card";
+    grid-template-columns: 380px 380px 300px;
+    grid-template-rows: 200px 200px;
+    margin: 20px;
+    position: relative;
+    top: -100px;
+}
+.box{
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.box p{
+    font-size: 14px;    
+}
+.bigbox{
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: center;
+}
+.box h3, .card h3{
+    margin: 20px 0 5px 10px;
+    font-weight: normal;
+}
+.littlebox:first-child{
+    border-left: none;
+}
+.littlebox{
+    border-left: var(--icn) 2px solid;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+.littlebox-card{
+    padding: 10px;
+}
+.card h5{
+    margin: 10px 0 0 0 ;
+    font-size: 15px;
+} 
+.box span{
+    margin: 0 auto;
+    font-size: 30px;
+}
+.box.sa{
+    grid-area: box1;
+}
+.box.du{
+    grid-area: box2;
+}
+.card{
+    padding: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    grid-area: card;
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+    overflow: auto;
+}
+.jumbo{
+    grid-area: jumbo;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+}
+.side a{
+    float: right;
+    margin-top: -30px;
+}
+/* SIDENAV */
 nav{
     position: sticky;
     top: 0;
@@ -44,11 +141,12 @@ nav{
     flex-direction: column;
     margin: 35px;
 }
-nav a{
+nav a, .jumbo a{
     border-radius: 15px;
     color: var(--blc);
     margin-bottom: 5px;
     padding: 15px 30px;
+    display: flex;
 }
 .h{
     display: flex;
@@ -74,20 +172,19 @@ nav a{
     font-size: 40px;
     color: var(--blc);
 }
-nav a:hover{
+nav a:hover, .jumbo a:hover{
     background-color: var(--icn);
     color: white;
 }
-#mark{
+#mark, .jumbo a{
     background-color: var(--blc);
     color: white;
     font-weight: bold;
 }
-
 /* DATA SISWA */
 
 .wraper-do{
-    margin: 5px 20px;
+    margin: 0 20px 5px 0px;
     display: flex;
     flex-direction: row;
 }
@@ -102,9 +199,12 @@ main{
     margin-top: 20px;
     background-color: var(--blc);
     border-radius: 50px;
-    width: 82%;
-    height: 665px;
+    width: 100%;
+    height: 645px;
     padding: 30px;
+}
+.container{
+    width: 82%;
 }
 main h1{
     color: white;
@@ -126,8 +226,11 @@ main h4{
     color: white;
     background-color: var(--icn);
 }
-.btn:hover span.material-symbols-outlined{
-    color: var(--blc);
+.btn:hover span.material-symbols-outlined, a:hover .material-symbols-outlined{
+    color: var(--blc) ;
+}
+a#mark:hover .material-symbols-outlined{
+    color: var(--icn);
 }
 .gr{
     background-color: var(--gry);
@@ -137,30 +240,39 @@ main h4{
     margin-top: 20px;
 }
 .sr{
-    padding: 15px;
+    padding: 10px;
     margin-left: 5px;
-    width: 100%;
+    font-size: 25px;
+    width: 680px;
     background-color: white;
-    border-end-end-radius: 10px;
-    border-top-right-radius: 10px;
+}
+form.search{
+    display: flex;
+}
+input[type='submit'].sear{
+    margin: 0px 5px;
 }
 main h2{
-    margin: 10px auto;
+    margin: 10px auto 0 auto;
     color: var(--blc);
     width: fit-content;
 }
 .wrap{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .cota{
     margin: 0 auto;
     padding-bottom: 50px;
     width: 100%;
     height: 360px;
+    overflow-y: auto;
     background-color: var(--snw);
     border-radius: 20px;
     border-bottom-left-radius: 72px;
     border-bottom-right-radius: 72px;
+}
+.cota::-webkit-scrollbar{
+    display: none;
 }
 .cus th{
     color: white;
@@ -169,17 +281,24 @@ main h2{
     padding: 15px;
     font-size: 18px;
 }
+table{
+    width: 100%;
+}
 .cus thead tr th:first-child{
     border-top-left-radius: 20px;
 }
 .cus thead tr th:last-child{
+    width: 197px;
     border-top-right-radius: 20px;
 }
 .cus tbody tr td{
+    word-wrap: break-word;
     background-color: white;
     border: var(--blc) 2px solid;
     padding: 10px;
+    max-width: 250px; 
     font-size: 20px;
+    text-align: center;
 }
 .wraper{
     display: flex;
@@ -211,18 +330,35 @@ main h2{
     background-color: white;
     padding: 25px;
     margin-top: 20px;
+    height: fit-content;
 }
 .for{
     font-size: 20px;
     width: 95%;
 }
 .for input[type=text]{
+    outline-color: var(--icn);
     width: 100%;
     height: 30px;
     border-radius: 10px;
     padding: 10px;
     border: var(--blc) 2px solid;
 }
+
+/* SELECTION CSS */
+select {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    border: 2px solid var(--blc);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+}
+/* SELECTION CSS END */
 .for tr td:first-child{
     width: 45%;
 }
@@ -246,4 +382,8 @@ input[type=submit]{
 .flex{
     display: flex;
     justify-content: center;
+}
+table tr.warn td{
+    background-color: var(--gry);
+    font-weight: bold;
 }

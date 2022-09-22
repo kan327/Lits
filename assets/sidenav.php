@@ -1,16 +1,16 @@
 <?php 
- if($id == "home"){
+ if($idpage == "home"){
     $home = "mark";
-    $prod = '';
- }elseif($id == "buku"){
+ }elseif($idpage == "siswa"){
+    $siswa = "mark";
+ }elseif($idpage == "prod"){
+    $prod = 'mark';
+ }elseif($idpage == "trash"){
+    $trash = 'mark';
+ }elseif($idpage == null){
     $home = '';
-    $prod = "mark";
- }elseif($id == null){
-    $home = '';
+    $siswa = '';
     $prod = '';
- }
- else{
-    echo"<script>alert('typo itu!!');</script>";
  }
 ?>
 <nav>
@@ -22,8 +22,10 @@
             <h1>Lits</h1>            
         </div>
         <div class="con">
-            <a href="data_siswa.php" id="<?=$home?>">Data Siswa</a>
-            <a href="data_buku.php" id="<?=$prod?>">Data Buku</a>
+            <a href="index.php" id="<?=$home?>"><span class="material-symbols-outlined">home</span>Home</a>
+            <a href="data_tabel.php?idpage=siswa" id="<?=$siswa?>"><span class="material-symbols-outlined">people</span>Data Siswa</a>
+            <a href="data_tabel.php?idpage=buku" id="<?=$prod?>"><span class="material-symbols-outlined">book</span>Data Buku</a>
+            <a href="trash.php" id="<?=$trash?>"><span class="material-symbols-outlined">folder</span>RecycleBin</a>
         </div>
     </div>
 </nav>   
